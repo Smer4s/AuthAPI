@@ -7,7 +7,7 @@ namespace AuthAPI
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddAuthorization();
+            builder.Services.AddControllers(); // Register controllers
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -22,9 +22,14 @@ namespace AuthAPI
                 app.UseSwaggerUI();
             }
 
-
             app.UseHttpsRedirection();
-            // student loh
+
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers(); // Map controllers to endpoints
+            });
+
             app.Run();
         }
     }
