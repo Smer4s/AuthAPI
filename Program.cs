@@ -24,7 +24,7 @@ namespace AuthAPI
 
 
             app.UseHttpsRedirection();
-
+            // student loh
             app.Run();
         }
     }
