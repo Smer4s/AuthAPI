@@ -22,6 +22,7 @@ namespace AuthAPI
                 app.UseSwaggerUI();
             }
 
+
             app.UseHttpsRedirection();
 
             app.Run();
