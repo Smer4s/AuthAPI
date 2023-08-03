@@ -1,6 +1,8 @@
 using AuthAPI.Controllers;
 using AuthAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
 namespace AuthAPI
 {
@@ -22,9 +24,9 @@ namespace AuthAPI
             // Add services to the container.
             builder.Services.AddControllers(); // Register controllers
 
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            //// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            //builder.Services.AddEndpointsApiExplorer();
+            //builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
 
@@ -35,6 +37,7 @@ namespace AuthAPI
                 app.UseSwaggerUI();
             }
 
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -43,7 +46,17 @@ namespace AuthAPI
                 endpoints.MapControllers(); // Map controllers to endpoints
             });
 
+            app.MapGet("/",() => "Hello World");
+
             app.Run();
         }
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<IStartup>();
+                    webBuilder.UseUrls("http://192.168.0.120:44376"); // Update the port as needed
+                });
     }
 }
+

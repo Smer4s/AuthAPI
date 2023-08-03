@@ -13,9 +13,9 @@ namespace AuthAPI.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasData(
-                    new User { Id = 1, Login = "Tomka1234", Password = "string12" },
-                    new User { Id = 2, Login = "Bobik164", Password = "string13" },
-                    new User { Id = 3, Login = "Smer4ik228", Password = "string14" }
+                    new User { Id = 1, Email = "studnikita@gmail.com", Password = "string12" },
+                    new User { Id = 2, Email = "Bobik164", Password = "string13" },
+                    new User { Id = 3, Email = "Smer4ik228", Password = "string14" }
             );
         }
     }

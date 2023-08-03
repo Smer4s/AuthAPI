@@ -13,13 +13,13 @@ namespace AuthAPI.Controllers
             _repository = repository;
         }
 
-        public static bool IsValid(string login, string password)
+        public static bool IsValid(string email, string password)
         {
             var users = _repository.Users();
 
             foreach (var user in users)
             {
-                if (user.Login == login && user.Password == password)
+                if (user.Email == email && user.Password == password)
                     return true;
             }
 

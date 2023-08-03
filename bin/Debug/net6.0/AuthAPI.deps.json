@@ -9,7 +9,10 @@
       "AuthAPI/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.9",
-          "Swashbuckle.AspNetCore": "6.5.0"
+          "Swashbuckle.AspNetCore": "6.5.0",
+          "Swashbuckle.AspNetCore.Swagger": "6.5.0",
+          "Swashbuckle.AspNetCore.SwaggerGen": "6.5.0",
+          "Swashbuckle.AspNetCore.SwaggerUI": "6.5.0"
         },
         "runtime": {
           "AuthAPI.dll": {}

@@ -22,9 +22,10 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "swagger",
+      "launchUrl": "",
+      "applicationUrl": "https://192.168.0.120:5000/",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Production"
       }
     }
   }
