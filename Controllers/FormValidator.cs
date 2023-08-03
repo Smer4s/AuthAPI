@@ -2,7 +2,7 @@
 
 namespace AuthAPI.Controllers
 {
-    public static class Validator
+    public static class FormValidator
     {
         public static bool IsValid(string str)
         {

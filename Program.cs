@@ -1,3 +1,7 @@
+using AuthAPI.Controllers;
+using AuthAPI.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace AuthAPI
 {
     public class Program
@@ -5,6 +9,15 @@ namespace AuthAPI
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            string? connection = builder.Configuration.GetConnectionString("DefaultConnection");
+
+            builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
+            builder.Services.AddScoped<Repository>();
+
+            var serviceProvider = builder.Services.BuildServiceProvider();
+            var repository = serviceProvider.GetRequiredService<Repository>();
+            DBValidator.Initialize(repository);
 
             // Add services to the container.
             builder.Services.AddControllers(); // Register controllers

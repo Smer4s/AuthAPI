@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AuthAPI.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Routing;
 using System.Security.Cryptography;
 using System.Text;
@@ -10,11 +11,11 @@ namespace AuthAPI.Controllers
     public class UserController : ControllerBase
     {
         [HttpGet(Name = "GetUser")]
-        public bool GetUser([FromQuery]User user)
+        public bool GetUser([FromQuery] string login, string password)
         {
-            if (Validator.IsValid(user.Password) && Validator.IsValid(user.Login))
+            if ((FormValidator.IsValid(login) && FormValidator.IsValid(password)) && DBValidator.IsValid(login, password))
             {
-                PostToken(user);
+              //  PostToken(user);
                 return true;
             }
             return false;
