@@ -19,6 +19,7 @@ namespace AuthAPI.Controllers
                     builder.Append(hashBytes[i].ToString("x2"));
                 }
                 return builder.ToString();
+                // Akskd
             }
         }
     }
