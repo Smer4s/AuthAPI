@@ -11,14 +11,13 @@ namespace AuthAPI.Controllers
     public class UserController : ControllerBase
     {
         [HttpGet(Name = "GetUser")]
-        public bool GetUser([FromQuery] string mail, string password)
+        public string GetUser([FromQuery] string mail, string password)
         {
             if ((FormValidator.IsValid(mail, password) && DBValidator.IsValid(mail, password)))
             {
-                //  PostToken(user);
-                return true;
+                return TokenGenerator.GenerateToken(mail + password);
             }
-            return false;
+            return "";
         }
 
         [HttpPost]
